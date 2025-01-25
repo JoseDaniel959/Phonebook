@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import  getAllNotes from "./Services/Persons/getAllNotes.js"
 import createPerson from "./Services/Persons/createPerson.js";
 import deletePerson from "./Services/Persons/deletePerson.js";
@@ -36,6 +36,7 @@ const App = () => {
     setFilterName(event.target.value);
   };
 
+  
   const filteredPersons = persons.filter((person) =>
     person.name.toUpperCase().includes(filterName.toUpperCase())
   );
@@ -67,6 +68,7 @@ const App = () => {
 
   const deleteName = (id) =>{
     deletePerson(id)
+    
   }
   return (
     <div>
@@ -91,10 +93,10 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       {filteredPersons.map((person) => (
-        <div key = {person.id}>
+        <div key = {person._id}>
         <p >
-          {person.name} {person.number}
-           <button onClick={() => deleteName(person.id)}> delete</button>
+          {person.name} {person.phonenumber}
+           <button onClick={() => deleteName(person._id)}> delete</button>
         </p> 
         </div>
 
